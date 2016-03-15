@@ -71,7 +71,7 @@ function countryLinesExpanded (){
         
         //country axis (lines)
         push();
-        translate(distanceText,0)
+        translate(distanceText,2)
         strokeWeight(.25)
         stroke(77)
         line (distanceLines,(yAxis-5),(width-distanceText),(yAxis-5));

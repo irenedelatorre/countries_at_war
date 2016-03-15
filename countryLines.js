@@ -49,27 +49,29 @@ function countryLines (y){
     
         //vars for zoom effect
         var ff = 0.005;
-        var mouseYChanged = mouseY;
+        var mouseYChanged = mouseY-45;
 
 //        zoomFactor = sqrt(sqrt(ff*abs(y-mouseYChanged)))+1;
 
         if (mouseY<-100 || mouseY>1000 || mouseX<-200 || mouseX>(width+200)){
             var zoomFactor = 0.28;
+            var yAxis = y * 3.5;
+            var sizeFontChanged = 0.1;
+            var controlSpaces = 0.2;
         }else{
 //            var zoomFactor = 1/(sqrt(ff*(abs(y-(mouseYChanged))))+1);
 //                var zoomFactor = 1/((sqrt(ff*abs(y-mouseYChanged)))+1);
-            var zoomFactor = 1/sqrt(sqrt(ff*abs(y-mouseYChanged)))+1;
-        }
-        
-        var controlSpaces = map(zoomFactor, 0, exp(0.25), 0.05, 0.5);
-        var distanceCountries = controlSpaces*myHeightShrunken/105;   
-        
-        var yAxis = y*3.5;
-        var yAxisText = y*5;
-
+            var zoomFactor = (1/sqrt(sqrt(ff*abs(y-mouseYChanged)))+1);
+            var spaceAxis = map(zoomFactor, 0, exp(0.5), 0, 2);
+            var yAxis = y+spaceAxis;
+            var sizeFontChanged = map(zoomFactor, exp(0.000000000000001), exp(0.5), 0.0005, 0.3);
+            var controlSpaces = map(zoomFactor, exp(0.0000000001), exp(0.35), 0.005, 0.6);
+        };
+//        print (zoomFactor);
+        var distanceCountries = controlSpaces*myHeightShrunken/105; 
         //control font sizes
-        var sizeFontChanged = map(zoomFactor, 0, exp(0.25), 0.05, 0.5);
-
+        
+        
         //names
         push ();
         translate(distanceText-5,0)
@@ -116,12 +118,12 @@ function countryLines (y){
                 });
                 return result;
 
-            }
-
+            };
+            
             while(test()){
                 yNew += 3;  
                
-            }
+            };           
 
             //test where I can fit this new line
             var newLine = new Line(x1, x2, yNew);
@@ -145,4 +147,9 @@ function Line(x1, x2, y){
     this.intersects = function(x1, x2, y){
         return y == this.y && ((x1 <= this.x2 && x1 >= this.x1) || (x2 <= this.x2 && x2 >= this.x1));
     }
+}
+
+function zoomtext (){
+    select(this)
+    textSize(18);
 }
