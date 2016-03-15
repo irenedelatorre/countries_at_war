@@ -1,0 +1,18 @@
+#canvas {
+    display: block;
+    position: absolute;
+  }
+
+#myContainer {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top:10px;
+}
+
+#shrunk, #expanded {
+    padding-right: 15px;
+    padding-left: 15px;
+
+}

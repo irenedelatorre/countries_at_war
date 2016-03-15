@@ -1,0 +1,45 @@
+var data;
+
+function preload() {
+    data = loadTable("media/Inter-StateWarData_v4.0.csv", "csv", "header");
+}
+
+function setup() {
+    createCanvas(innerWidth,800);
+//    print(data.getRowCount()+" total rows in table"); //counts rows
+//    print(data.getColumnCount()+" total columns in table") //counts columns
+//    print(data.getColumn("StateName")); // gets data from tha column
+//    print(data.getRows()) //returns all rows as an array
+    
+    var dataObject = data.getObject(); //converts all rows in an object
+    print(dataObject);
+    
+    var country = data.getColumn("StateName"); //gets the name
+    print(country);
+    
+    var stateName = [];
+    
+    //nest by WARS, then by COUNTRY. Get casualties, startDate and endDate
+    var data2 =  [
+        stateName = data.getObject("WarName")
+        ];
+    
+    print(data2);
+    
+//    for (var i=0; i < data.getRowCount(); i++){
+//       [
+//        country = data.getObject(i,"StateName")
+//        ]
+//        console.log(data)
+//        var side = data.get(i,5);
+//        //var startDate = data.getDate(i,6);
+//        //var endDate = data.getDate(i,7);
+//        var initiator = data.get(i,22);
+//        var outcome = data.get(i,23);
+//        var deaths = data.getNum(i,25);
+    }
+    
+
+function draw() {
+    background(51)
+}

@@ -1,0 +1,46 @@
+html,body,div,ul,li,svg{
+    margin:0;
+    padding:0;
+    list-style:none;
+}
+/*------------Global-------------*/
+html,body{
+    height: 100%;
+    position: relative;
+    background-color: #333333;
+
+}
+
+.btn-default {
+    color: #F7F7F7;
+    background-color: #333;
+    border-color: #F7F7F7;
+}
+
+.container {
+    margin-bottom:20px;
+}
+/*------------font-------------*/
+
+body{
+    font-family: 'Lato', sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    color:#808080;
+}
+h1 {
+    font-weight: 300;
+    font-size: 50px;
+    color:#ffffff;
+    text-transform: uppercase;
+}
+
+.year {
+    font-size:18px;
+    color:#808080;
+}
+
+.intro {
+    color: #F7F7F7;
+    margin-bottom:20px;
+}
