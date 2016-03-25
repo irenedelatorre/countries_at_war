@@ -10,16 +10,23 @@ html,body{
     background-color: #333333;
 
 }
-
-.btn-default {
-    color: #F7F7F7;
-    background-color: #333;
-    border-color: #F7F7F7;
-}
-
 .container {
     margin-bottom:20px;
 }
+
+.introduction {
+    float:left;
+    width: 67%;
+    padding-right:5px;
+}
+
+.tooltipbox {
+    float:left;
+    width: 25%;
+    padding-left: 40px;
+    font-weight: 300;
+}
+
 /*------------font-------------*/
 
 body{
@@ -34,6 +41,12 @@ h1 {
     color:#ffffff;
     text-transform: uppercase;
 }
+h2 {
+    font-weight: 300;
+    font-size: 24px;
+    color:#808080;
+
+}
 
 .year {
     font-size:18px;
@@ -41,6 +54,37 @@ h1 {
 }
 
 .intro {
-    color: #F7F7F7;
     margin-bottom:20px;
+    font-size:16px;
+}
+
+/*------------tooltip-------------*/
+.war {
+    font-size:30px;
+    color:aqua;
+    margin-top:-5px;
+}
+.dates, .participants  {
+    font-size:14px;
+    color:aqua;
+    line-height: 1;
+}
+.dates {
+    top-margin:-2px;
+}
+
+
+
+/*------------buttons-------------*/
+.btn-default {
+    color: #808080;
+    background-color: #333;
+    border-color: #808080;
+    border-radius:0;
+}
+.btn-default:hover,.btn-default.active,.btn-default:active,.btn-default.focus,.btn-default:focus  {
+    color: #F7F7F7;
+    background-color: #333;
+    border-color: #F7F7F7;
+    border-radius:0;
 }

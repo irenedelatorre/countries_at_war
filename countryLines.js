@@ -1,7 +1,7 @@
 //function draw lines for shrunken version
+var myellipse;
 
 function countryLines (y){
-    
     var myHeightShrunken=650;
     var width = 1150;
         
@@ -12,21 +12,20 @@ function countryLines (y){
     var distanceLines = 0,
         x = distanceLines;
     
-    // distance text from left margin
-    var distanceText = 300;
-    
     var fixInWindow = 0.87;
-    push()
-    translate(distanceText,0)
+    push();
+    translate(distanceText,0);
     
-    // TIME AXIS
+/*------------time axis-------------*/
+    
     myDates.forEach(function(myDates){
         var distanceLines2 = (width-distanceText)/4;
-        textSize(18);
+        
+        textSize(16);
         fill(128);
         noStroke();
         textAlign(CENTER);
-        textFont("Lato Light");
+        textFont(latoLight);
         text(myDates,x,10);
         
         push();
@@ -35,54 +34,66 @@ function countryLines (y){
         stroke(89);
         line(x, 0, x, 2710);
         pop();
-        
         x = x + distanceLines2; 
     });
     pop();
     
+/*------------guide line-------------*/
+    (function () {
+        fill(25)
+        noStroke();
+        mouseX = min(mouseX, width);
+        mouseX = max(mouseX, 300);
+        rect(mouseX-5,20,10,5);
+             
+        strokeWeight(1)
+        stroke(25)
+        mouseX = min(mouseX, width);
+        mouseX = max(mouseX, 300);
+        line (mouseX ,20,mouseX ,2710);
+    })();
+    
     push();
-    translate(0,30);
+    translate(0,distanceAxis);
     var y = 0;
 
-    // draw country array
+/*------------draw country array-------------*/
     countries.forEach(function(country,i){
     
-        //vars for zoom effect
+        //variables for zoom effect
         var ff = 0.005;
         var mouseYChanged = mouseY-45;
 
-//        zoomFactor = sqrt(sqrt(ff*abs(y-mouseYChanged)))+1;
-
-        if (mouseY<-100 || mouseY>1000 || mouseX<-200 || mouseX>(width+200)){
+        if (mouseY<(-100) || mouseY>myHeightShrunken || mouseX<(-200) || mouseX>(width+200)){
             var zoomFactor = 0.28;
             var yAxis = y * 3.5;
             var sizeFontChanged = 0.1;
             var controlSpaces = 0.2;
-        }else{
-//            var zoomFactor = 1/(sqrt(ff*(abs(y-(mouseYChanged))))+1);
-//                var zoomFactor = 1/((sqrt(ff*abs(y-mouseYChanged)))+1);
-            var zoomFactor = (1/sqrt(sqrt(ff*abs(y-mouseYChanged)))+1);
+        } else {
+            //print(mouseYChanged);
+            if(mouseYChanged < 1) mouseYChanged = 1;
+            var zoomFactor = (1/(sqrt(sqrt(ff*abs(y-mouseYChanged))))+1);
+
             var spaceAxis = map(zoomFactor, 0, exp(0.5), 0, 2);
             var yAxis = y+spaceAxis;
-            var sizeFontChanged = map(zoomFactor, exp(0.000000000000001), exp(0.5), 0.0005, 0.3);
-            var controlSpaces = map(zoomFactor, exp(0.0000000001), exp(0.35), 0.005, 0.6);
+            var sizeFontChanged = map(zoomFactor, exp(0.5), exp(2), 0.05, 3);
+            sizeFontChanged = min(sizeFontChanged, 3);
+//            sizeFontChanged = max(sizeFontChanged, 0.05);
+            var controlSpaces = map(zoomFactor, exp(0.5), exp(2), 0.1, 10);
         };
-//        print (zoomFactor);
-        var distanceCountries = controlSpaces*myHeightShrunken/105; 
-        //control font sizes
-        
+
+        var distanceCountries = controlSpaces*myHeightShrunken/105;
         
         //names
         push ();
         translate(distanceText-5,0)
         fill(128);
-        textFont("Lato Light");
+        textFont(latoLight);
         textSize(sizeFontChanged*16);
         noStroke();
         textAlign(RIGHT);
         text(country.name,0,yAxis);
         pop();
-
 
         //country axis (lines)
         push();
@@ -94,18 +105,17 @@ function countryLines (y){
 
         push();
         translate(distanceText,0);
-
+        
+        // country lines
+        // add more space between wars happening at the same time for the same country
         var drawnLines = [];    
 
-        for(var i=0; i<country.conflicts.length; i++){
+        for(var i=0; i<country.conflicts.length; i++){  
             var conflict = country.conflicts[i];
-
             var startDecimal = getDecimalDate(conflict.startDate);
             var endDecimal = getDecimalDate(conflict.endDate);
-
             var x1 = map(startDecimal, 1810, 2010, 0, (width-distanceText));
             var x2 = map(endDecimal, 1810, 2010, 0, (width-distanceText));
-
             var yNew = yAxis;
             
             function test(){
@@ -121,21 +131,30 @@ function countryLines (y){
             };
             
             while(test()){
-                yNew += 3;  
-               
+                if (mouseY<(-100) || mouseY>myHeightShrunken || mouseX<(-200) || mouseX>(width+200)){
+                   yNew += 1.5;
+                }else{
+                    yNew += 3;
+                };
             };           
 
             //test where I can fit this new line
             var newLine = new Line(x1, x2, yNew);
             drawnLines.push(newLine);
-            //print(drawnLines.length);
-            line(x1, yNew, x2, yNew);
-
+            conflict.x1 = x1;
+            conflict.y = yNew;
+            conflict.x2 = x2;
+            
+            strokeWeight(1);
+            stroke(255);
+            line(x1, yNew, x2, yNew);            
         }   
         y += distanceCountries;
         pop();
 
     });
+    
+    
     pop();
 }
 
@@ -147,9 +166,4 @@ function Line(x1, x2, y){
     this.intersects = function(x1, x2, y){
         return y == this.y && ((x1 <= this.x2 && x1 >= this.x1) || (x2 <= this.x2 && x2 >= this.x1));
     }
-}
-
-function zoomtext (){
-    select(this)
-    textSize(18);
 }
