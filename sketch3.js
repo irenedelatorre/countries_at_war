@@ -31,8 +31,12 @@ var Conflict = function (warName, startDate, endDate, sideWar, casualties) {
     this.casualties = casualties;
 };
 
+var list = [];
+
+var myHeightShrunken = 650;
+
 // distance text from left margin
-var distanceText = 300;
+var distanceText = 310;
 
 //distance from the axis
 var distanceAxis = 30;
@@ -151,6 +155,29 @@ function draw() {
     linesDrawFunction();
 
 
+    var side1 = "#6EC233";
+    var side2 = "#E8CE21";
+
+    var side1Legend = "—";
+    var side1LegendText = "  Winners"
+    var side2Legend = "—"
+    var side2LegendText = " Defeated";
+
+    var legend1Dash = select("#legend1dash");
+    var legend1 = select("#legend1");
+    var legend2Dash = select("#legend2dash");
+    var legend2 = select("#legend2");
+
+    legend1Dash.style("color", side1)
+    legend2Dash.style("color", side2)
+        //    legend2.style("margin-right","400px")
+    legend1Dash.html(side1Legend)
+    legend1.html(side1LegendText);
+    legend2Dash.html(side2Legend)
+    legend2.html(side2LegendText);
+
+
+
 
     //go through every conflict of every country and see if mouseX, mouseY is over the corresponding line
     //if it is, do something
@@ -158,74 +185,184 @@ function draw() {
     (function () {
         for (var i = 0; i < countries.length; i++) {
             var c = countries[i];
+
             //            print(c.conflicts);
 
             for (var j = 0; j < countries[i].conflicts.length; j++) {
 
-
                 var con = c.conflicts[j];
 
                 var isOverLine = false;
-
-                stroke("aqua");
-                line(con.x1 + distanceText, con.y + distanceAxis, con.x2 + distanceText, con.y + distanceAxis);
+                //if it's inside
 
 
+                if (con.x2 - con.x1 <= 1) {
 
-                mouseYChanged = mouseY - 20;
-                ellipse(mouseX, mouseYChanged, 5, 5)
-                    //if it's inside
-                if ((con.x1 + distanceText) <= mouseX && mouseX <= (con.x2 + distanceText) && (con.y + distanceAxis - 0.00025) <= mouseYChanged && mouseYChanged <= (con.y + distanceText + 0.00025)) {
-                    isOverLine = true;
+                    if ((con.x1 + distanceText - 1) <= mouseX && mouseX <= (con.x2 + distanceText + 1) && (con.y + distanceAxis - 5) <= mouseYChanged && mouseYChanged <= (con.y + distanceAxis + 5)) {
+
+                        isOverLine = true;
+
+                    } else {
+
+                        isOverLine = false;
+
+
+                    }
+
                 } else {
-                    isOverLine = false;
+
+                    if ((con.x1 + distanceText) <= mouseX && mouseX <= (con.x2 + distanceText) && (con.y + distanceAxis - 3.5) <= mouseYChanged && mouseYChanged <= (con.y + distanceAxis + 3.5)) {
+                        isOverLine = true;
+
+                    } else {
+                        isOverLine = false;
+
+
+                    }
                 }
+
+                var list = [];
+
+
 
                 if (isOverLine == true) {
+
+                    var partsElSide1 = select("#winners");
+                    partsElSide1.html("");
+
+                    var partsElSide2 = select("#defeated");
+                    partsElSide2.html("");
+
                     textFont(latoLight);
                     noStroke();
-                    fill("aqua");
-
                     var el = select("#war");
                     el.html(con.warName);
-                    // textSize(30)
-                    //text(,700,0);
 
-                    //tooltip1
+                    var dateStart = con.startDate.month + "-" + con.startDate.day + "-" + con.startDate.year;
+                    var dateEnd = con.endDate.month + "-" + con.endDate.day + "-" + con.endDate.year;
 
-                    dateStart = con.startDate.month + "-" + con.startDate.day + "-" + con.startDate.year;
-                    dateEnd = con.endDate.month + "-" + con.endDate.day + "-" + con.endDate.year;
+                    var dateWar = dateStart + ", " + dateEnd;
 
-                    dateWar = dateStart + ", " + dateEnd;
+                    var el2 = select("#dates");
+                    el2.html(dateWar);
 
-                    textSize(14);
-                    text(dateWar, 700, 25);
+                    var el4 = select("#country");
+                    if (con.sideWar == 2) {
+                        colorText = color(side2)
+
+                    } else {
+                        colorText = color(side1)
+
+                    };
+                    el4.html(c.name)
+                    el4.style("color", colorText)
+
+                    var oneParticipant;
+
+                    //go through the wars array
+                    for (w = 0; w < wars.length; w++) { //95 countries
+
+                        if (con.warName == wars[w].name) {
+
+                            var thisWar = wars[w].participants
+
+                            //for each war go through the participants array
+                            for (p = 0; p < thisWar.length; p++) {
+
+                                //display all the participants, or put them in a structure that will be displayed
+                                oneParticipant = thisWar[p].participant;
+                                side = thisWar[p].sideWar;
 
 
+                                if (oneParticipant == "false") {
+                                    list.push(oneParticipant);
+                                } else {
+                                    list.push(oneParticipant);
+                                }
 
-                    //                    if (con.warName = wars[i].name){
-                    //                        //go through the wars array
-                    //                        //for each war go through the participants array
-                    //                        //display all the participants, or put them in a structure that will be displayed
-                    ////                        print(wars[i].participants)
-                    ////                        text(wars[i].participants[i].participant,700,0)
-                    //                    }
-                    //
-                    //                    
-                    //                } else {
-                    //                    text(" ")
-                    ////                    print("not touching any line");
-                    //                }
+                                var textColor = side1;
+                                var elSide1 = createSpan(oneParticipant + ", ");
+                                var elSide2 = createSpan(oneParticipant + ", ");
+                                
+                        
+
+                                switch (side) {
+                                case 1:
+                                    elSide1.parent(partsElSide1)
+                                    textColor = side1;
+                                    break;
+                                case 2:
+                                    elSide2.parent(partsElSide2)
+                                    textColor = side2;
+                                }
+                                
+                                
+                                
+
+                                elSide1.style("color", textColor);
+
+                                elSide2.style("color", textColor);
 
 
+                            }
 
-                    //draw tooptip on mouseX, mouseY
-                    //get information either from the country or the conflict
-                    //if it's inside, return
+                            list.forEach(function (listName, i) {
+                                for (var j = 0; j < countries.length; j++) {
+                                    var eachCountry = countries[j].name;
+                                    var eachConflict = countries[j].conflicts;
+                                    if (list[i] == eachCountry) {
+                                        //                                        print(eachCountry)
+                                        for (g = 0; g < eachConflict.length; g++) {
+                                            if (con.warName == eachConflict[g].warName) {
+                                                //                                                print(eachConflict[g].warName)
+                                                if (eachConflict[g].sideWar == 2) {
+
+                                                    stroke(side2)
+
+                                                } else if (eachConflict[g].sideWar == 1) {
+
+                                                    stroke(side1);
+
+                                                }
+
+
+                                                strokeWeight(1.5);
+                                                line(eachConflict[g].x1 + distanceText, eachConflict[g].y + distanceAxis, eachConflict[g].x2 + distanceText, eachConflict[g].y + distanceAxis);
+
+                                            }
+                                        }
+
+
+                                    }
+                                }
+
+                            })
+
+
+                        }
+
+                    }
+
                 }
+                if (isOverLine == true) {
+                    fillCircle = "#000";
+                } else {
+                    fillCircle = "#fff";
+                }
+                mouseYChanged = mouseY - 20;
+                fill(fillCircle)
+                stroke(0)
+                strokeWeight(1);
+                mouseX = min(mouseX, width);
+                mouseX = max(mouseX, distanceText);
+                mouseYChanged = max(mouseYChanged, 30)
+                ellipse(mouseX, mouseYChanged, 5, 5);
+
             }
 
         }
+        tooltip();
+
 
     })();
 
@@ -234,6 +371,23 @@ function draw() {
 
 
 }
+
+function tooltip() {
+    var strokeColor = color("#808080")
+    var tooltip = select("#tooltipbox");
+
+    mouseX = min(mouseX, width);
+    mouseX = max(mouseX, distanceText);
+    //    mouseY = min(mouseY, );
+    mouseY = max(mouseY, 170);
+
+    tooltip.style("border-color", strokeColor)
+    tooltip.size([340], [AUTO])
+    tooltip.position(mouseX + 400, mouseY + 300)
+
+};
+
+
 
 function shrunken() {
     buttonShrunk = createButton('Shrunk Version');

@@ -1,90 +1,245 @@
-html,body,div,ul,li,svg{
-    margin:0;
-    padding:0;
-    list-style:none;
+html,
+body,
+div,
+ul,
+li,
+svg {
+    margin: 0;
+    padding: 0;
+    list-style: none;
 }
+
+
 /*------------Global-------------*/
-html,body{
+
+html,
+body {
     height: 100%;
     position: relative;
     background-color: #333333;
-
 }
+
 .container {
-    margin-bottom:20px;
+    margin-bottom: 20px;
+}
+
+.toppart {
+    width: 100% margin-left: 0px;
 }
 
 .introduction {
-    float:left;
-    width: 67%;
-    padding-right:5px;
+    position: relative;
+    float: left;
+    width: 100%;
+        margin-bottom:20px;
+/*    height: 230px;*/
+     overflow: auto;
 }
-
-.tooltipbox {
-    float:left;
-    width: 25%;
-    padding-left: 40px;
-    font-weight: 300;
+a {
+    color: #628586;
 }
 
 /*------------font-------------*/
 
-body{
+body {
     font-family: 'Lato', sans-serif;
     font-size: 16px;
     font-weight: 300;
-    color:#808080;
+    color: #808080;
+    
 }
-h1 {
-    font-weight: 300;
-    font-size: 50px;
-    color:#ffffff;
-    text-transform: uppercase;
-}
-h2 {
-    font-weight: 300;
-    font-size: 24px;
-    color:#808080;
 
+h1 {
+    font-size: 74px;
+    text-transform: uppercase;
+    font-weight: 400;
+    color: #628586;
+    letter-spacing: 0.015em;
+}
+
+h1 .white {
+    color: #fff !important;
+    font-weight: 800;
+    letter-spacing: 0.05em;
 }
 
 .year {
-    font-size:18px;
-    color:#808080;
+    font-size: 18px;
+    color: #808080;
 }
 
 .intro {
-    margin-bottom:20px;
-    font-size:16px;
+    width: 70%;
+    float: left;
+    font-size: 17px;
+    color: #D6D6D6;
+    line-height: 1.4em;
 }
+
+.block1 {
+    border-bottom: 1px solid #1F1F1F;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    overflow: auto;
+}
+
+
+/*------------authorship-------------*/
+
+.authorship {
+    width: 30%;
+    float: left;
+    padding-left: 50px;
+}
+
+.authorship p {
+    font-size: 14px;
+    line-height: 1.4em;
+    margin-bottom: 5px;
+    color: #fff;
+    color: #D6D6D6;
+    font-weight: 300;
+}
+
 
 /*------------tooltip-------------*/
-.war {
-    font-size:30px;
-    color:aqua;
-    margin-top:-5px;
-}
-.dates, .participants  {
-    font-size:14px;
-    color:aqua;
-    line-height: 1;
-}
-.dates {
-    top-margin:-2px;
+
+#tooltipbox {
+    /*    width: 340px;*/
+    position: relative;
+    float: left;
+    /*    padding: 10px 20px 10px 20px;*/
+    font-weight: 300;
+    stroke: 1px;
+    margin-top: -10px;
 }
 
+#war {
+    width: 350px;
+    font-size: 30px;
+    color: #fff;
+    margin-top: -5px;
+    background-color: rgba(24, 32, 33, 0.9);
+    padding-left: 20px;
+    padding-right: 10px;
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
 
+#country {
+    font-size: 18px;
+    line-height: 1.5em;
+    padding-bottom: 5px !important;
+}
+
+#dates {
+    font-size: 14px;
+    color: #fff;
+    line-height: 1.5em;
+    padding-bottom: 5px !important;
+}
+
+#defeated {
+    font-size: 14px;
+    
+    line-height: 1.5em;
+    width: 350px;
+    background-color: rgba(24, 32, 33, 0.9);
+    margin-top: -10px;
+    padding-left: 20px;
+    padding-right: 10px;
+    padding-bottom: 20px;
+}
+#winners {
+    font-size: 14px;
+    line-height: 1.5em;
+    width: 350px;
+    background-color: rgba(24, 32, 33, 0.9);
+    margin-top: -10px;
+    padding-left: 20px;
+    padding-right: 10px;
+    padding-bottom: 5px;
+}
+
+.tooltiptext {
+    font-size: 14px;
+    color: #808080;
+    width: 350px;
+    background-color: rgba(24, 32, 33, 0.9);
+    margin-top: -10px;
+    padding-left: 20px;
+    padding-right: 10px;
+    padding-bottom: 5px !important;
+}
+.tooltiptext2 {
+    font-size: 14px;
+    color: #808080;
+    width: 350px;
+    background-color: rgba(24, 32, 33, 0.9);
+    margin-top: -10px;
+    padding-left: 20px;
+    padding-right: 10px;
+}
 
 /*------------buttons-------------*/
+
 .btn-default {
     color: #808080;
     background-color: #333;
     border-color: #808080;
-    border-radius:0;
+    border-radius: 0;
+    margin-top: 0px;
 }
-.btn-default:hover,.btn-default.active,.btn-default:active,.btn-default.focus,.btn-default:focus  {
+
+.btn-default:hover,
+.btn-default.active,
+.btn-default:active,
+.btn-default.focus,
+.btn-default:focus {
     color: #F7F7F7;
     background-color: #333;
     border-color: #F7F7F7;
-    border-radius:0;
+    border-radius: 0;
 }
+
+
+/*------------legend-------------*/
+
+.block2 {
+    float: none;
+}
+
+.explanation {
+    font-size: 14px;
+    font-weight: 400;
+    padding-bottom: 5px;
+    width: 75%;
+    float: left;
+    padding-left:25px;
+}
+
+.legend {
+    width: 25%;
+    float: left;
+}
+
+.legendline {
+    width: 100%;
+    overflow: auto;
+    margin-top: 10px;
+}
+
+.dash {
+    font-weight: bold;
+    float: left;
+    margin-top: -2px;
+}
+
+.legendText {
+    float: left;
+    margin-left: 5px;
+    margin-right: 50px;
+    font-size: 14px;
+    font-weight: 400;
+}
+

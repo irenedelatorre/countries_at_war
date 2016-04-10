@@ -42,7 +42,7 @@ function countryLinesExpanded (){
         fill(25)
         noStroke();
         mouseX = min(mouseX, width);
-        mouseX = max(mouseX, 300);
+        mouseX = max(mouseX, distanceText);
         rect(mouseX-5,20,10,5);
         
         strokeWeight(1)

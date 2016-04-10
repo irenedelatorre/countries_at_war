@@ -1,38 +1,74 @@
 <html>
+
 <head>
-  <meta charset="UTF-8">
-  <title>Interstate Wars: 1820-2003</title>
-  <script language="javascript" type="text/javascript" src="libraries/p5.js"></script>
-  <!-- uncomment lines below to include extra p5 libraries -->
-  <script language="javascript" src="libraries/p5.dom.js"></script>
-  <!--<script language="javascript" src="libraries/p5.sound.js"></script>-->
-  <script language="javascript" type="text/javascript" src="sketch3.js"></script>
-  <script language="javascript" type="text/javascript" src="countryLines.js"></script>
-  <script language="javascript" type="text/javascript" src="countryLinesExpanded.js"></script>
-  <link href='https://fonts.googleapis.com/css?family=Lato:400,300,700,900,400italic' rel='stylesheet' type='text/css'>
-  <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"/>
-  <link href="style.css" rel="stylesheet"/>
-  <!-- this line removes any default padding and style. you might only need one of these values set. -->
-  <style> body {padding: 0; margin: 0;} </style>
+    <meta charset="UTF-8">
+    <title>Interstate Wars: 1820-2003</title>
+    <script language="javascript" type="text/javascript" src="libraries/p5.js"></script>
+    <!-- uncomment lines below to include extra p5 libraries -->
+    <script language="javascript" src="libraries/p5.dom.js"></script>
+    <!--<script language="javascript" src="libraries/p5.sound.js"></script>-->
+    <script language="javascript" type="text/javascript" src="sketch3.js"></script>
+    <script language="javascript" type="text/javascript" src="countryLines.js"></script>
+    <script language="javascript" type="text/javascript" src="countryLinesExpanded.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,300,700,900,400italic' rel='stylesheet' type='text/css'>
+    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="style.css" rel="stylesheet" />
+    <!-- this line removes any default padding and style. you might only need one of these values set. -->
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+        }
+    </style>
 </head>
 
 <body>
-<div class="container">
-  </br>
-  <h1>Countries at War, 1823 - 2003</h1>
-  </br>
-    <div class="introduction">
-      <p class="intro">Between 1823 and 2003, 106 countries participated in an inter-state war. This is a visual chronology of the 96 conflicts that involved sustained combat, organized armed forces and that had more than 1,000 battle-related combatant fatalities within a twelve month period. Because of the dataset used, only the states that either omitted 1,000 troops to the war or suffered more than 100 battle related deaths are considered. </p>
-      <a id="shrunk"></a>
-      <a id="expanded"></a>
-    </div>
-    <div id="tooltipbox">
-    <p id="war"></p>
-    <p id="dates">22-mar-2016, 22-mar-2016</p>
-    <p id="participants">Participants: <span class="listParticipants">list of names</span></p>
-    </div>
-    <div id="myContainer"></div>
+    <div class="container">
+        <div class="toppart">
+            </br>
+            <h1 class="title">Countries at <span class="white">War</span> 1823-2003</h1>
+            </br>
 
-  </div>
+            <div class="introduction">
+                <div class="block1">
+                    <p class="intro">Between 1823 and 2003, one hundred and six countries participated in an inter-state war. This is a visual chronology of the ninety six conflicts that involved sustained combat, organized armed forces and that had more than 1,000 battle-related combatant fatalities within a twelve month period. Because of the <a href="http://cow.dss.ucdavis.edu/data-sets/COW-war/inter-state-war-data-v4-0">dataset</a> used, only the states that either omitted 1,000 troops to the war or suffered more than 100 battle related deaths are considered.</p>
+                    <div class="authorship">
+                        <p>Irene de la Torre Arenas</p>
+                        <p>Information Design Studio 2 (Spring 2016)</p>
+                        <p>Teacher: Pedro Cruz</p>
+                        <p><a href="http://www.northeastern.edu/camd/artdesign/academic-programs/mfa-in-information-design-and-visualization/">MFA Information Design and Visualization, Northeastern University</a></p>
+                    </div>
+                </div>
+                <div class="block2">
+                    <div class="legend">
+                        <a id="shrunk"></a>
+                        <a id="expanded"></a>
+                        <div class="legendline">
+                            <p id="legend1dash" class="dash"></p>
+                            <p id="legend1" class="legendtext"></p>
+                            <p id="legend2dash" class="dash"></p>
+                            <p id="legend2" class="legendtext"></p>
+                        </div>
+                        
+                    </div>
+                    <p class="explanation">Mouse over each line to know the name of the war and the duration of the country's participation in it. Click on the "Shrunken" button to see an overall view of all wars from 1823 to 2003. If you want to view individual wars, the "Expanded" button will allow you to interact with the specific conflicts of a country in an easier way. </p>
+                </div>
+
+            </div>
+        </div>
+        <div id="tooltipbox">
+            <p id="war"></p>
+            <p class="tooltiptext">Country: <span id="country"></span></p>
+            <p class="tooltiptext">Participation in the war: <span id="dates"></span></p>
+<!--            <p class="tooltiptext">Countries that participated in the conflict:</p>-->
+            <p class="tooltiptext2">Country/ies that won the conflict:</p>
+            <p id="winners"></p>
+            <p class="tooltiptext2">Country/ies that were defeated in the conflict:</p>
+            <p id="defeated"></p>
+        </div>
+        <div id="myContainer"></div>
+
+    </div>
 </body>
+
 </html>
