@@ -2,6 +2,9 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="description" content="Visual chronology of the 96 inter state wars that happened between 1823 and 2003.">
+    <meta name="keywords" content="P5.js, countries at war, data visualization, Northeastern University, College of Arts, Media and Design">
+    <meta name="author" content="Irene de la Torre Arenas">
     <title>Interstate Wars: 1820-2003</title>
     <script language="javascript" type="text/javascript" src="libraries/p5.js"></script>
     <!-- uncomment lines below to include extra p5 libraries -->
@@ -31,17 +34,22 @@
 
             <div class="introduction">
                 <div class="block1">
-                    <p class="intro">Between 1823 and 2003, one hundred and six countries participated in an inter-state war. This is a visual chronology of the ninety six conflicts that involved sustained combat, organized armed forces and that had more than 1,000 battle-related combatant fatalities within a twelve month period. Because of the <a href="http://cow.dss.ucdavis.edu/data-sets/COW-war/inter-state-war-data-v4-0">dataset</a> used, only the states that either omitted 1,000 troops to the war or suffered more than 100 battle related deaths are considered.</p>
-                    <div class="authorship">
-                        <p>Irene de la Torre Arenas</p>
-                        <p>Information Design Studio 2 (Spring 2016)</p>
-                        <p>Teacher: Pedro Cruz</p>
-                        <p><a href="http://www.northeastern.edu/camd/artdesign/academic-programs/mfa-in-information-design-and-visualization/">MFA Information Design and Visualization, Northeastern University</a></p>
+                    <div class="col2">
+                        <p class="intro">This is a visual chronology of the 96 conflicts that involved sustained combat with organized armed forces and that had more than 1,000 battle-related combatant fatalities between 1823 and 2003. 
+                        <br/>
+                        <br/> The <a href="http://cow.dss.ucdavis.edu/data-sets/COW-war/inter-state-war-data-v4-0">dataset used</a> shows the countries that either committed 1,000 troops to the war or suffered more than 100 battle related deaths.</p>
+                                                <br/>
+                        <br/>
+
+                        <p class="authorship">Irene de la Torre Arenas</p>
+                        <p class="authorship">Information Design Studio 2 (Spring 2016)</p>
+                        <p class="authorship">Teacher: Pedro Cruz</p>
+                        <p class="authorship"><a href="http://www.northeastern.edu/camd/artdesign/academic-programs/mfa-in-information-design-and-visualization/">MFA Information Design and Visualization,<br/> Northeastern University</a></p>
                     </div>
                 </div>
                 <div class="block2">
                     <div class="legend">
-                        <a id="shrunk"></a>
+                        <a id="collapse"></a>
                         <a id="expanded"></a>
                         <div class="legendline">
                             <p id="legend1dash" class="dash"></p>
@@ -49,9 +57,9 @@
                             <p id="legend2dash" class="dash"></p>
                             <p id="legend2" class="legendtext"></p>
                         </div>
-                        
+
                     </div>
-                    <p class="explanation">Mouse over each line to know the name of the war and the duration of the country's participation in it. Click on the "Shrunken" button to see an overall view of all wars from 1823 to 2003. If you want to view individual wars, the "Expanded" button will allow you to interact with the specific conflicts of a country in an easier way. </p>
+                    <p class="explanation">Mouse over each line to know the name of the war and the duration of the country's participation in it. Click on the buttons to see an overall view or a more linear chronology.</p>
                 </div>
 
             </div>
@@ -60,7 +68,7 @@
             <p id="war"></p>
             <p class="tooltiptext">Country: <span id="country"></span></p>
             <p class="tooltiptext">Participation in the war: <span id="dates"></span></p>
-<!--            <p class="tooltiptext">Countries that participated in the conflict:</p>-->
+            <!--            <p class="tooltiptext">Countries that participated in the conflict:</p>-->
             <p class="tooltiptext2">Country/ies that won the conflict:</p>
             <p id="winners"></p>
             <p class="tooltiptext2">Country/ies that were defeated in the conflict:</p>

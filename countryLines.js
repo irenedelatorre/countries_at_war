@@ -41,15 +41,15 @@ function countryLines(y) {
     (function () {
         fill(25)
         noStroke();
-        mouseX = min(mouseX, width);
-        mouseX = max(mouseX, distanceText);
-        rect(mouseX - 5, 20, 10, 5);
+        mouseXChanged = min(mouseX, width);
+        mouseXChanged = max(mouseX, distanceText);
+        rect(mouseXChanged - 5, 20, 10, 5);
 
         strokeWeight(1)
         stroke(25)
-        mouseX = min(mouseX, width);
-        mouseX = max(mouseX, distanceText);
-        line(mouseX, 20, mouseX, 2710);
+        mouseXChanged = min(mouseX, width);
+        mouseXChanged = max(mouseX, distanceText);
+        line(mouseXChanged, 20, mouseXChanged, 2710);
     })();
 
     push();
@@ -63,13 +63,12 @@ function countryLines(y) {
         var ff = 0.005;
         var mouseYChanged = mouseY - 55;
 
-        if (mouseY < (-100) || mouseY > myHeightShrunken || mouseX < (-200) || mouseX > (width + 200)) {
+        if (mouseY < (-100) || mouseY > myHeightShrunken || mouseXChanged < (-200) || mouseXChanged > (width + 200)) {
             var zoomFactor = 0.28;
             var yAxis = y * 3.5;
             var sizeFontChanged = 0.1;
             var controlSpaces = 0.2;
         } else {
-            //print(mouseYChanged);
             if (mouseYChanged < 1) mouseYChanged = 1;
             var zoomFactor = (1 / (sqrt(sqrt(ff * abs(y - mouseYChanged)))) + 1);
 
@@ -117,9 +116,9 @@ function countryLines(y) {
             var x1 = map(startDecimal, 1810, 2010, 0, (width - distanceText));
             var x2 = map(endDecimal, 1810, 2010, 0, (width - distanceText));
             var yNew = yAxis;
-            
-            
-//            var controlOpacity = map(conflict.casualties, 1000, 500000, 0.5, 1);
+
+
+            //            var controlOpacity = map(conflict.casualties, 1000, 500000, 0.5, 1);
             var controlOpacity = 1;
             strokeLines = "#fff";
 
@@ -136,7 +135,7 @@ function countryLines(y) {
             };
 
             while (test()) {
-                if (mouseY < (-100) || mouseY > myHeightShrunken || mouseX < (-200) || mouseX > (width + 200)) {
+                if (mouseY < (-100) || mouseY > myHeightShrunken || mouseXChanged < (-200) || mouseXChanged > (width + 200)) {
                     yNew += 1.5;
                 } else {
                     yNew += 3;
