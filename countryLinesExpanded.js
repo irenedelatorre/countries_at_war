@@ -1,8 +1,6 @@
 //function draw lines for expanded version
-
-
 function countryLinesExpanded() {
-    print("expanded")
+    
     var myHeightExpanded = 2700;
     var width = 1150;
     var mouseXChanged2 = mouseX;
