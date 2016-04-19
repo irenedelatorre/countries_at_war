@@ -309,14 +309,15 @@ function draw() {
                 } else {
                     fillCircle = "#fff";
                 }
-                mouseYChanged = mouseY - 20;
+                var mouseYChanged = mouseY - 20;
+                var mouseXChanged = mouseX;
                 fill(fillCircle)
                 stroke(0)
                 strokeWeight(1);
-                mouseXChanged = min(mouseX, width);
-                mouseXChanged = max(mouseX, distanceText);
-                mouseYChanged = max(mouseYChanged, 30)
-                mouseYChanged = min(mouseYChanged, 2730)
+                var mouseXChanged = min(mouseXChanged, width-20);
+                var mouseXChanged = max(mouseXChanged, distanceText);
+                var mouseYChanged = max(mouseYChanged, 30)
+                var mouseYChanged = min(mouseYChanged, 2730)
                 ellipse(mouseXChanged, mouseYChanged, 5, 5);
 
             }
@@ -340,7 +341,7 @@ function tooltip() {
     tooltip.style("border-color", strokeColor)
     tooltip.size([340], [AUTO])
     tooltip.position(mouseX + 400, mouseY + 300)
-    if (mouseY < 0 || mouseY > 2770 || mouseX < 305 || mouseX > (width)) {
+    if (mouseY < 0 || mouseY > 2770 || mouseX < 305 || mouseX > (width-20)) {
         tooltip.hide();
     } else {
         tooltip.show();

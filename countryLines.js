@@ -2,7 +2,9 @@
 var myellipse;
 
 function countryLines(y) {
+    
     var width = 1150;
+    var mouseXChanged1 = mouseX;
 
     //axis TIME
     var myDates = ["1810", "1860", "1910", "1960", "2010"];
@@ -14,7 +16,7 @@ function countryLines(y) {
     var fixInWindow = 0.87;
     push();
     translate(distanceText, 0);
-
+    
     /*------------time axis-------------*/
 
     myDates.forEach(function (myDates) {
@@ -37,19 +39,20 @@ function countryLines(y) {
     });
     pop();
 
+    
     /*------------guide line-------------*/
     (function () {
+
         fill(25)
         noStroke();
-        mouseXChanged = min(mouseX, width);
-        mouseXChanged = max(mouseX, distanceText);
-        rect(mouseXChanged - 5, 20, 10, 5);
+        mouseXChanged1 = min(mouseXChanged1, width);
+        mouseXChanged1 = max(mouseXChanged1, distanceText);
+        rect(mouseXChanged1 - 5, 20, 10, 5);
 
         strokeWeight(1)
         stroke(25)
-        mouseXChanged = min(mouseX, width);
-        mouseXChanged = max(mouseX, distanceText);
-        line(mouseXChanged, 20, mouseXChanged, 2710);
+
+        line(mouseXChanged1, 20, mouseXChanged1, 2710);
     })();
 
     push();
@@ -63,7 +66,7 @@ function countryLines(y) {
         var ff = 0.005;
         var mouseYChanged = mouseY - 55;
 
-        if (mouseY < (-100) || mouseY > myHeightShrunken || mouseXChanged < (-200) || mouseXChanged > (width + 200)) {
+        if (mouseY < (-100) || mouseY > myHeightShrunken || mouseXChanged1 < (-200) || mouseXChanged1 > (width + 200)) {
             var zoomFactor = 0.28;
             var yAxis = y * 3.5;
             var sizeFontChanged = 0.1;
@@ -135,7 +138,7 @@ function countryLines(y) {
             };
 
             while (test()) {
-                if (mouseY < (-100) || mouseY > myHeightShrunken || mouseXChanged < (-200) || mouseXChanged > (width + 200)) {
+                if (mouseY < (-100) || mouseY > myHeightShrunken || mouseXChanged1 < (-200) || mouseXChanged1 > (width + 200)) {
                     yNew += 1.5;
                 } else {
                     yNew += 3;

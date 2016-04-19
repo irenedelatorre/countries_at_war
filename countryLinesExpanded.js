@@ -1,8 +1,10 @@
 //function draw lines for expanded version
 
+
 function countryLinesExpanded() {
     var myHeightExpanded = 2700;
     var width = 1150;
+    var mouseXChanged2 = mouseX;
 
     //axis TIME
     var myDates = ["1810", "1860", "1910", "1960", "2010"];
@@ -18,6 +20,7 @@ function countryLinesExpanded() {
     /*------------time axis-------------*/
 
     myDates.forEach(function (myDates) {
+
         var distanceLines2 = (width - distanceText) / 4;
         textSize(16);
         fill(128);
@@ -41,14 +44,12 @@ function countryLinesExpanded() {
     (function () {
         fill(25)
         noStroke();
-        mouseXChanged2 = min(mouseX, width);
-        mouseXChanged2 = max(mouseX, 310);
+        mouseXChanged2 = min(mouseXChanged2, width);
+        mouseXChanged2 = max(mouseXChanged2, 310);
         rect(mouseXChanged2 - 5, 20, 10, 5);
 
         strokeWeight(1)
         stroke(25)
-        mouseXChanged2 = min(mouseX, width);
-        mouseXChanged2 = max(mouseX, 310);
         line(mouseXChanged2, 20, mouseXChanged2, myHeightExpanded + 40);
     })();
 
@@ -57,8 +58,8 @@ function countryLinesExpanded() {
     translate(0, distanceAxis);
     var y = 0;
 
+    
     /*------------draw country array-------------*/
-
     countries.forEach(function (country, i) {
 
         // distance for war lines that coincide in time (same country)
