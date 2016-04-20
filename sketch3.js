@@ -352,7 +352,7 @@ function tooltip() {
         };
     } else {
         if (mouseX > 0 && mouseX <= 730) {
-            tooltip.position(mouseX + 400, mouseY + 300)
+            tooltip.position(mouseX + distanceText + 100, mouseY + 300)
         } else {
             tooltip.position(mouseX, mouseY + 300)
         };
