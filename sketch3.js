@@ -349,13 +349,13 @@ function tooltip() {
             tooltip.position(mouseX + 10, mouseY + 300)
         } else {
             tooltip.position(mouseX + 400, mouseY + 300)
-        }
+        };
     } else {
         if (mouseX > 0 && mouseX <= 730) {
-            tooltip.position(mouseX + 800, mouseY + 300)
+            tooltip.position(mouseX + 400, mouseY + 300)
         } else {
             tooltip.position(mouseX - 10, mouseY + 300)
-        }
+        };
     }
 
     if (mouseY < 0 || mouseY > 2770 || mouseX < 305 || mouseX > (width - 20)) {
