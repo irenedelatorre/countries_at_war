@@ -340,7 +340,7 @@ function tooltip() {
 
     tooltip.style("border-color", strokeColor)
     tooltip.size([340], [AUTO])
-    tooltip.position(mouseX + 400, mouseY + 300)
+    tooltip.position(mouseX + distanceText + 100, mouseY + 300)
     if (mouseY < 0 || mouseY > 2770 || mouseX < 305 || mouseX > (width-20)) {
         tooltip.hide();
     } else {
