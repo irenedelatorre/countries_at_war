@@ -343,9 +343,17 @@ function tooltip() {
     var is_chrome = navigator.userAgent.toLowerCase().indexOf('chrome') > -1;
 
     if (!is_chrome) {
-        tooltip.position(mouseX + 400, mouseY + 300)
+        if (mouseX > 305 && mouseX < 600) {
+            tooltip.position(mouseX + 400, mouseY + 300)
+        } else if (mouseX > 600 && mouseX < (width-20)) {
+            tooltip.position(mouseX - 400, mouseY + 300)
+        }
     } else {
-        tooltip.position(mouseX + 220, mouseY + 300)
+        if (mouseX > 305 && mouseX < 600) {
+            tooltip.position(mouseX + 220, mouseY + 300)
+        } else if (mouseX > 600 && mouseX < (width-20) {
+            tooltip.position(mouseX - 220, mouseY + 300)
+        }
     }
 
     if (mouseY < 0 || mouseY > 2770 || mouseX < 305 || mouseX > (width - 20)) {
