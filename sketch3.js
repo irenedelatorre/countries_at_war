@@ -345,16 +345,16 @@ function tooltip() {
     print(mouseX)
 
     if (!is_chrome) {
-        if (mouseX > 0 && mouseX < 730) {
+        if (mouseX > 0 && mouseX <= 730) {
             tooltip.position(mouseX + 400, mouseY + 300)
         } else {
             tooltip.position(mouseX - 300, mouseY + 300)
         }
     } else {
-        if (mouseX > 0 && mouseX < 730) {
+        if (mouseX > 0 && mouseX <= 730) {
             tooltip.position(mouseX + 220, mouseY + 300)
         } else {
-            tooltip.position(mouseX - 10, mouseY + 300)
+            tooltip.position(mouseX + 10, mouseY + 300)
         }
     }
 
