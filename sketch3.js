@@ -341,17 +341,19 @@ function tooltip() {
     tooltip.style("border-color", strokeColor)
     tooltip.size([340], [AUTO])
     var is_chrome = navigator.userAgent.toLowerCase().indexOf('chrome') > -1;
+    
+    print(mouseX)
 
     if (!is_chrome) {
-        if (mouseX > 305 && mouseX < 600) {
+        if (mouseX > 0 && mouseX < 730) {
             tooltip.position(mouseX + 400, mouseY + 300)
-        } else if (mouseX > 600 && mouseX < (width-20)) {
+        } else {
             tooltip.position(mouseX - 400, mouseY + 300)
         }
     } else {
-        if (mouseX > 305 && mouseX < 600) {
+        if (mouseX > 0 && mouseX < 730) {
             tooltip.position(mouseX + 220, mouseY + 300)
-        } else if (mouseX > 600 && mouseX < (width-20) {
+        } else {
             tooltip.position(mouseX - 220, mouseY + 300)
         }
     }
