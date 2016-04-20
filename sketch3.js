@@ -224,7 +224,7 @@ function draw() {
                     } else {
                         colorText = color(side1)
                     };
-                    
+
                     el4.html(c.name)
                     el4.style("color", colorText)
 
@@ -247,7 +247,7 @@ function draw() {
                                     list.push(oneParticipant);
                                 }
                                 var textColor = side1;
-                                
+
                                 switch (side) {
                                 case 1:
                                     var elSide1 = createSpan(oneParticipant + ", ");
@@ -262,17 +262,17 @@ function draw() {
                                     elSide2.style("color", textColor);
                                 }
                             }
-                            
-                            var allSpans = selectAll("span",partsElSide1);
-                            var allSpans2 = selectAll("span",partsElSide2);
-                            
-                            var comma1 = allSpans[allSpans.length-1];
-                                comma1.html(comma1.html().replace(",", ""));
-                            
-                            var comma2 = allSpans2[allSpans2.length-1];
-                                comma2.html(comma2.html().replace(",", ""));
-                            
-                            
+
+                            var allSpans = selectAll("span", partsElSide1);
+                            var allSpans2 = selectAll("span", partsElSide2);
+
+                            var comma1 = allSpans[allSpans.length - 1];
+                            comma1.html(comma1.html().replace(",", ""));
+
+                            var comma2 = allSpans2[allSpans2.length - 1];
+                            comma2.html(comma2.html().replace(",", ""));
+
+
 
                             list.forEach(function (listName, i) {
                                 for (var j = 0; j < countries.length; j++) {
@@ -314,7 +314,7 @@ function draw() {
                 fill(fillCircle)
                 stroke(0)
                 strokeWeight(1);
-                var mouseXChanged = min(mouseXChanged, width-20);
+                var mouseXChanged = min(mouseXChanged, width - 20);
                 var mouseXChanged = max(mouseXChanged, distanceText);
                 var mouseYChanged = max(mouseYChanged, 30)
                 var mouseYChanged = min(mouseYChanged, 2730)
@@ -340,8 +340,15 @@ function tooltip() {
 
     tooltip.style("border-color", strokeColor)
     tooltip.size([340], [AUTO])
-    tooltip.position(mouseX + 220, mouseY + 300)
-    if (mouseY < 0 || mouseY > 2770 || mouseX < 305 || mouseX > (width-20)) {
+    var is_chrome = navigator.userAgent.toLowerCase().indexOf('chrome') > -1;
+
+    if (!is_chrome) {
+        tooltip.position(mouseX + 400, mouseY + 300)
+    } else {
+        tooltip.position(mouseX + 220, mouseY + 300)
+    }
+
+    if (mouseY < 0 || mouseY > 2770 || mouseX < 305 || mouseX > (width - 20)) {
         tooltip.hide();
     } else {
         tooltip.show();
