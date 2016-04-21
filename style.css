@@ -146,7 +146,7 @@ h1 .white {
 
 #war {
     width: 350px;
-    font-size: 30pt;
+    font-size: 18pt;
     color: #fff;
     margin-top: -5px;
     background-color: rgba(24, 32, 33, 0.9);
@@ -157,20 +157,20 @@ h1 .white {
 }
 
 #country {
-    font-size: 18pt;
+    font-size: 15pt;
     line-height: 1.5em;
     padding-bottom: 5px !important;
 }
 
 #dates {
-    font-size: 14pt;
+    font-size: 10pt;
     color: #D6D6D6;
     line-height: 1.5em;
     padding-bottom: 5px !important;
 }
 
 #defeated {
-    font-size: 14pt;
+    font-size: 10pt;
     line-height: 1.5em;
     width: 350px;
     background-color: rgba(24, 32, 33, 0.9);
@@ -181,7 +181,7 @@ h1 .white {
 }
 
 #winners {
-    font-size: 14pt;
+    font-size: 10pt;
     line-height: 1.5em;
     width: 350px;
     background-color: rgba(24, 32, 33, 0.9);
@@ -192,7 +192,7 @@ h1 .white {
 }
 
 .tooltiptext {
-    font-size: 14px;
+    font-size: 10pt;
     color: #808080;
     width: 350px;
     background-color: rgba(24, 32, 33, 0.9);
@@ -203,7 +203,7 @@ h1 .white {
 }
 
 .tooltiptext2 {
-    font-size: 14pt;
+    font-size: 10pt;
     color: #808080;
     width: 350px;
     background-color: rgba(24, 32, 33, 0.9);
