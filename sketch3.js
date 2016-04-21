@@ -350,15 +350,15 @@ function tooltip() {
 
     if (!is_chrome) {
         if (mouseX > 0 && mouseX <= 640) {
-            tooltip.position(mouseX + distanceText + 100, mouseY + 300)
+            tooltip.position(mouseX + distanceText + 160, mouseY + 300)
         } else {
-            tooltip.position(mouseX + 10, mouseY + 300)
+            tooltip.position(mouseX + 90, mouseY + 300)
         };
     } else {
         if (mouseX > 0 && mouseX <= 640) {
-            tooltip.position(mouseX + distanceText + 155, mouseY + 300)
+            tooltip.position(mouseX + distanceText + 160, mouseY + 300)
         } else {
-            tooltip.position(mouseX + 95, mouseY + 300)
+            tooltip.position(mouseX + 90, mouseY + 300)
         };
     }
 
