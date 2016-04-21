@@ -337,6 +337,12 @@ function draw() {
 }
 
 function tooltip() {
+    print(width)
+    print(innerWidth)
+    
+    var x = (innerWidth - width)/2;
+    var y = innerHeight - height;
+    
     var strokeColor = color("#808080")
     var tooltip = select("#tooltipbox");
 
@@ -346,21 +352,31 @@ function tooltip() {
     tooltip.size([340], [AUTO])
     var is_chrome = navigator.userAgent.toLowerCase().indexOf('chrome') > -1;
     
+    print (x)
+    
+    
+    if (mouseX > 0 && mouseX <= 640) {
+            tooltip.position(mouseX + x + 40, mouseY + 300)
+        } else {
+            tooltip.position(mouseX + x - 370, mouseY + 300)
+        };
+
+    
 //    print(mouseX)
 
-    if (!is_chrome) {
-        if (mouseX > 0 && mouseX <= 640) {
-            tooltip.position(mouseX + distanceText + 160, mouseY + 300)
-        } else {
-            tooltip.position(mouseX + 90, mouseY + 300)
-        };
-    } else {
-        if (mouseX > 0 && mouseX <= 640) {
-            tooltip.position(mouseX + distanceText + 160, mouseY + 300)
-        } else {
-            tooltip.position(mouseX + 90, mouseY + 300)
-        };
-    }
+//    if (!is_chrome) {
+//        if (mouseX > 0 && mouseX <= 640) {
+//            tooltip.position(mouseX + x, mouseY + 300)
+//        } else {
+//            tooltip.position(mouseX + 90, mouseY + 300)
+//        };
+//    } else {
+//        if (mouseX > 0 && mouseX <= 640) {
+//            tooltip.position(mouseX + distanceText + 160, mouseY + 300)
+//        } else {
+//            tooltip.position(mouseX + 90, mouseY + 300)
+//        };
+//    }
 
     if (mouseY < 0 || mouseY > 2770 || mouseX < 305 || mouseX > (width - 20)) {
         tooltip.hide();
@@ -368,8 +384,17 @@ function tooltip() {
         tooltip.show();
 
     };
-};
+    
+//    getCursorPosition();
+}
 
+//function getCursorPosition(canvas, event) {
+//    
+//    var rect = canvas.getBoundingClientRect();
+//    var x = event.clientX - rect.left;
+//    var y = event.clientY - rect.top;
+//    print("x: " + x + " y: " + y);
+//}
 
 
 
