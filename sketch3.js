@@ -43,6 +43,25 @@ var distanceAxis = 30;
 
 var linesDrawFunction = null;
 
+function shrunken() {
+    buttonShrunk = createButton('Collapsed Version');
+    buttonShrunk.addClass("btn btn-default")
+    buttonShrunk.mousePressed(function () {
+        linesDrawFunction = countryLines;
+    });
+    buttonShrunk.parent("collapse");
+}
+
+function expanded() {
+    
+    buttonExpanded = createButton('Expanded Version');
+    buttonExpanded.addClass("btn btn-default");
+    buttonExpanded.mousePressed(function () {
+        linesDrawFunction = countryLinesExpanded;
+    });
+    buttonExpanded.parent("expanded");
+}
+
 function preload() {
     table = loadTable("media/Inter-StateWarData_v4.0.csv", "csv", "header");
 
@@ -342,13 +361,13 @@ function tooltip() {
     tooltip.size([340], [AUTO])
     var is_chrome = navigator.userAgent.toLowerCase().indexOf('chrome') > -1;
     
-    print(mouseX)
+//    print(mouseX)
 
     if (!is_chrome) {
         if (mouseX > 0 && mouseX <= 730) {
-            tooltip.position(mouseX + 10, mouseY + 300)
-        } else {
             tooltip.position(mouseX + distanceText + 100, mouseY + 300)
+        } else {
+            tooltip.position(mouseX + 10, mouseY + 300)
         };
     } else {
         if (mouseX > 0 && mouseX <= 730) {
@@ -368,23 +387,7 @@ function tooltip() {
 
 
 
-function shrunken() {
-    buttonShrunk = createButton('Collapsed Version');
-    buttonShrunk.addClass("btn btn-default")
-    buttonShrunk.mousePressed(function () {
-        linesDrawFunction = countryLines;
-    });
-    buttonShrunk.parent("collapse");
-}
 
-function expanded() {
-    buttonExpanded = createButton('Expanded Version');
-    buttonExpanded.addClass("btn btn-default");
-    buttonExpanded.mousePressed(function () {
-        linesDrawFunction = countryLinesExpanded;
-    });
-    buttonExpanded.parent("expanded");
-}
 
 // functions to create the correct dates
 var ODate = function (AAAA, MM, DD) {

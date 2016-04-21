@@ -1,6 +1,7 @@
 //function draw lines for expanded version
 function countryLinesExpanded() {
     
+    
     var myHeightExpanded = 2700;
     var width = 1150;
     var mouseXChanged2 = mouseX;
@@ -92,6 +93,7 @@ function countryLinesExpanded() {
 
         push()
         translate(distanceText, 0)
+        
 
         var drawnLines = [];
 
@@ -103,12 +105,8 @@ function countryLinesExpanded() {
             var x2 = map(endDecimal, 1810, 2010, 0, (width - distanceText));
             var yNew = y;
 
-            while (test()) {
-                yNew += 3;
-
-            }
-
             function test() {
+               
                 var result = false;
                 drawnLines.forEach(function (line) {
                     if (line.intersects(x1, x2, yNew)) {
@@ -117,6 +115,12 @@ function countryLinesExpanded() {
                     }
                 });
                 return result;
+
+            }
+            
+            while (test()) {
+                yNew += 3;
+                 
 
             }
 
@@ -137,4 +141,5 @@ function countryLinesExpanded() {
 
     })
     pop();
+    
 }
