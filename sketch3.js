@@ -356,9 +356,9 @@ function tooltip() {
         };
     } else {
         if (mouseX > 0 && mouseX <= 640) {
-            tooltip.position(mouseX + distanceText + 95, mouseY + 300)
+            tooltip.position(mouseX + distanceText + 200, mouseY + 300)
         } else {
-            tooltip.position(mouseX + 10, mouseY + 300)
+            tooltip.position(mouseX + distanceText, mouseY + 300)
         };
     }
 
