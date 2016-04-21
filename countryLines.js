@@ -3,7 +3,7 @@ var myellipse;
 
 function countryLines(y) {
     
-    var width = 1150;
+    var width = 970;
     var mouseXChanged1 = mouseX;
 
     //axis TIME
@@ -78,7 +78,7 @@ function countryLines(y) {
             var spaceAxis = map(zoomFactor, 0, exp(0.5), 0, 2);
             var yAxis = y + spaceAxis;
             var sizeFontChanged = map(zoomFactor, exp(0.5), exp(2), 0.05, 3);
-            sizeFontChanged = min(sizeFontChanged, 3);
+            sizeFontChanged = min(sizeFontChanged, 2.5);
             //            sizeFontChanged = max(sizeFontChanged, 0.05);
             var controlSpaces = map(zoomFactor, exp(0.5), exp(2), 0.1, 10);
 

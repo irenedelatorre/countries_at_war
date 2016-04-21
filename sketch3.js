@@ -43,24 +43,6 @@ var distanceAxis = 30;
 
 var linesDrawFunction = null;
 
-function shrunken() {
-    buttonShrunk = createButton('Collapsed Version');
-    buttonShrunk.addClass("btn btn-default")
-    buttonShrunk.mousePressed(function () {
-        linesDrawFunction = countryLines;
-    });
-    buttonShrunk.parent("collapse");
-}
-
-function expanded() {
-    
-    buttonExpanded = createButton('Expanded Version');
-    buttonExpanded.addClass("btn btn-default");
-    buttonExpanded.mousePressed(function () {
-        linesDrawFunction = countryLinesExpanded;
-    });
-    buttonExpanded.parent("expanded");
-}
 
 function preload() {
     table = loadTable("media/Inter-StateWarData_v4.0.csv", "csv", "header");
@@ -73,7 +55,7 @@ function preload() {
 
 function setup() {
     var myHeight = 2900;
-    var width = 1170;
+    var width = 1024;
 
     var myCanvas = createCanvas(width, myHeight);
     myCanvas.parent('myContainer');
@@ -154,6 +136,7 @@ function setup() {
     }
     shrunken();
     expanded();
+    disclaimer();
 
 
 }
@@ -169,6 +152,7 @@ function draw() {
     push();
     translate(0, 20);
     linesDrawFunction();
+    
 
 
     var side1 = "#6EC233";
@@ -333,11 +317,12 @@ function draw() {
                 fill(fillCircle)
                 stroke(0)
                 strokeWeight(1);
-                var mouseXChanged = min(mouseXChanged, width - 20);
+                var mouseXChanged = min(mouseXChanged, width - 54);
                 var mouseXChanged = max(mouseXChanged, distanceText);
                 var mouseYChanged = max(mouseYChanged, 30)
                 var mouseYChanged = min(mouseYChanged, 2730)
                 ellipse(mouseXChanged, mouseYChanged, 5, 5);
+            
 
             }
 
@@ -364,13 +349,13 @@ function tooltip() {
 //    print(mouseX)
 
     if (!is_chrome) {
-        if (mouseX > 0 && mouseX <= 730) {
+        if (mouseX > 0 && mouseX <= 640) {
             tooltip.position(mouseX + distanceText + 100, mouseY + 300)
         } else {
             tooltip.position(mouseX + 10, mouseY + 300)
         };
     } else {
-        if (mouseX > 0 && mouseX <= 730) {
+        if (mouseX > 0 && mouseX <= 640) {
             tooltip.position(mouseX + distanceText + 100, mouseY + 300)
         } else {
             tooltip.position(mouseX, mouseY + 300)
@@ -399,4 +384,38 @@ var ODate = function (AAAA, MM, DD) {
 
 function getDecimalDate(date) {
     return date.year + (date.month - 1) / 12 + (date.day - 1) / 365;
+}
+
+
+function shrunken() {
+    buttonShrunk = createButton('Collapsed Version');
+    buttonShrunk.addClass("btn btn-default")
+    buttonShrunk.mousePressed(function () {
+        linesDrawFunction = countryLines;
+    });
+    buttonShrunk.parent("collapse");
+}
+
+function expanded() {
+    
+    buttonExpanded = createButton('Expanded Version');
+    buttonExpanded.addClass("btn btn-default on");
+    buttonExpanded.mousePressed(function () {
+        linesDrawFunction = countryLinesExpanded;
+        buttonExpanded.removeClass("on");
+    });
+    buttonExpanded.parent("expanded");
+}
+
+function disclaimer() {
+    
+    buttonExpanded = createButton('Please visualize this website with your browser in full width');
+    buttonExpanded.addClass("btn btn-default disclaimer");
+    
+    buttonExpanded.mousePressed(function () {
+        linesDrawFunction = countryLines;
+        buttonExpanded.remove()
+    });
+    buttonExpanded.parent("full-screen");
+    
 }

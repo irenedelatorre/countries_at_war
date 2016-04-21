@@ -3,7 +3,7 @@ function countryLinesExpanded() {
     
     
     var myHeightExpanded = 2700;
-    var width = 1150;
+    var width = 970;
     var mouseXChanged2 = mouseX;
 
     //axis TIME
