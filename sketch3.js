@@ -136,8 +136,7 @@ function setup() {
     }
     shrunken();
     expanded();
-    disclaimer();
-
+    
 
 }
 
@@ -404,15 +403,3 @@ function expanded() {
     buttonExpanded.parent("expanded");
 }
 
-function disclaimer() {
-    
-    buttonExpanded = createButton('Please visualize this website with your browser in full width');
-    buttonExpanded.addClass("btn btn-default disclaimer");
-    
-    buttonExpanded.mousePressed(function () {
-        linesDrawFunction = countryLines;
-        buttonExpanded.remove()
-    });
-    buttonExpanded.parent("full-screen");
-    
-}
