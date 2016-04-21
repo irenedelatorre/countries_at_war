@@ -104,10 +104,7 @@ function countryLinesExpanded() {
             var x2 = map(endDecimal, 1810, 2010, 0, (width - distanceText));
             var yNew = y;
 
-            while (test()) {
-                yNew += 3;
-
-            }
+            
 
             function test() {
                 var result = false;
@@ -118,6 +115,11 @@ function countryLinesExpanded() {
                     }
                 });
                 return result;
+
+            }
+            
+            while (test()) {
+                yNew += 3;
 
             }
 
