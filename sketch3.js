@@ -319,10 +319,12 @@ function draw() {
                 var mouseYChanged = max(mouseYChanged, 30)
                 var mouseYChanged = min(mouseYChanged, 2730)
                 ellipse(mouseXChanged, mouseYChanged, 5, 5);
+                
 
             }
 
-        }
+        };
+        
         tooltip();
 
 
@@ -333,6 +335,11 @@ function draw() {
 }
 
 function tooltip() {
+    
+    
+    var x = (innerWidth - width)/2;
+    var y = innerHeight - height;
+    
     var strokeColor = color("#808080")
     var tooltip = select("#tooltipbox");
 
@@ -340,14 +347,25 @@ function tooltip() {
 
     tooltip.style("border-color", strokeColor)
     tooltip.size([340], [AUTO])
-    tooltip.position(mouseX + distanceText + 100, mouseY + 300)
-    if (mouseY < 0 || mouseY > 2770 || mouseX < 305 || mouseX > (width-20)) {
+    var is_chrome = navigator.userAgent.toLowerCase().indexOf('chrome') > -1;
+    
+    
+    if (mouseX > 0 && mouseX <= 730) {
+            tooltip.position(mouseX + x + 40, mouseY + 300)
+        } else {
+            tooltip.position(mouseX + x - 370, mouseY + 300)
+        };
+    
+
+    if (mouseY < 0 || mouseY > 2770 || mouseX < 305 || mouseX > (width - 20)) {
         tooltip.hide();
     } else {
         tooltip.show();
 
     };
-};
+    
+
+}
 
 
 
