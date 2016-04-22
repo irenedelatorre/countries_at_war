@@ -1,8 +1,10 @@
 #Countries at War 1823-2003
 
-Final project for ARTG6110 Information Design Studio II (Spring 2016)
-
-MFA Information Design and Visualization, Northeastern University
+Irene de la Torre Arenas
+Information Design Studio 2 (Spring 2016)
+Teacher: Pedro Cruz
+MFA Information Design and Visualization,
+Northeastern University
 
 Using p5.js p5js.org
 
